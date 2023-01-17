@@ -4,11 +4,33 @@ on:
       - main
 name: release
 jobs:
-  release-please:
+  release:
     runs-on: ubuntu-latest
+    outputs:
+      release_created: ${{ steps.release.outputs.release_created }}
     steps:
-      - uses: google-github-actions/release-please-action@v3
+      - id: release
+        uses: google-github-actions/release-please-action@v3
         with:
-          token: ${{ secrets.RELEASE_GH_TOKEN }}
           release-type: maven
           package-name: com.redhat.cloud.event.event-schemas
+          skip-snapshot: true
+  publish:
+    needs: [ release ]
+    runs-on: ubuntu-latest
+    if: ${{ needs.release.outputs.release_created }}
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Maven Central Repository
+        uses: actions/setup-java@v3
+        with:
+          java-version: 11
+          distribution: adopt
+          server-id: jboss.releases
+          server-username: MAVEN_USERNAME
+          server-password: MAVEN_PASSWORD
+      - name: Publish package
+        run: mvn --batch-mode deploy
+        env:
+          MAVEN_USERNAME: ${{ secrets.MAVEN_USERNAME }}
+          MAVEN_PASSWORD: ${{ secrets.MAVEN_PASSWORD }}
