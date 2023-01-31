@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.1](https://github.com/RedHatInsights/event-schemas-java/compare/v1.0.0...v1.0.1) (2023-01-31)
+
+
+### Bug Fixes
+
+* Bump api from `433b72b` to `4119fc6` ([#45](https://github.com/RedHatInsights/event-schemas-java/issues/45)) ([ac2814a](https://github.com/RedHatInsights/event-schemas-java/commit/ac2814a8ccb12a55a33a5cc7cdb307e5d2c609bd))
+
 ## 1.0.0 (2023-01-17)
 
 
