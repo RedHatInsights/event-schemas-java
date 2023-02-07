@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.2](https://github.com/RedHatInsights/event-schemas-java/compare/v1.0.1...v1.0.2) (2023-02-07)
+
+
+### Bug Fixes
+
+* Include schemas in the release ([19e44f6](https://github.com/RedHatInsights/event-schemas-java/commit/19e44f6ef70562c060734cc7f918fb7b48b6ad87))
+
 ## [1.0.1](https://github.com/RedHatInsights/event-schemas-java/compare/v1.0.0...v1.0.1) (2023-01-31)
 
 
