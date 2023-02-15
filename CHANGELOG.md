@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.3](https://github.com/RedHatInsights/event-schemas-java/compare/v1.0.2...v1.0.3) (2023-02-15)
+
+
+### Bug Fixes
+
+* Regenerate types ([1f22730](https://github.com/RedHatInsights/event-schemas-java/commit/1f22730e6dd32018b9f4b43408902c973397b8b7))
+
 ## [1.0.2](https://github.com/RedHatInsights/event-schemas-java/compare/v1.0.1...v1.0.2) (2023-02-07)
 
 
