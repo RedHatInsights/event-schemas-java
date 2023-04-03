@@ -1,6 +1,6 @@
 {
   "dependencies": {
-    "quicktype": "^23.0.0",
+    "quicktype": "^23.0.19",
     "quicktype-core": "^23.0.19"
   },
   "scripts": {
