@@ -67,7 +67,7 @@ async function main() {
   const repoRoot = execSync('git rev-parse --show-toplevel', { encoding: 'utf8' }).trim();
   console.info('Clearing out existing source files')
   for (const path of ['apps', 'core']) {
-    fs.rmSync(`${repoRoot}/${path}`, {recursive: true, force: true});
+    fs.rmSync(`${repoRoot}/src/main/java/com/redhat/cloud/event/${path}`, {recursive: true, force: true});
   }
   console.info('Generating source files');
   const apps = await fsPromises.readdir(`${repoRoot}/api/schemas/apps/`);
