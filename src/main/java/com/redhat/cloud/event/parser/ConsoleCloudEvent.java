@@ -14,6 +14,9 @@ public class ConsoleCloudEvent {
 
     String source;
 
+    @JsonProperty("specversion")
+    String specVersion;
+
     String subject;
 
     LocalDateTime time;
@@ -45,6 +48,14 @@ public class ConsoleCloudEvent {
 
     public void setSource(String source) {
         this.source = source;
+    }
+
+    public String getSpecVersion() {
+        return specVersion;
+    }
+
+    public void setSpecVersion(String specVersion) {
+        this.specVersion = specVersion;
     }
 
     public String getSubject() {
