@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.0](https://github.com/RedHatInsights/event-schemas-java/compare/v1.0.3...v1.1.0) (2023-04-04)
+
+
+### Features
+
+* Adds ability to parse and validate the whole message ([#89](https://github.com/RedHatInsights/event-schemas-java/issues/89)) ([0e215d4](https://github.com/RedHatInsights/event-schemas-java/commit/0e215d4a765e76b3467bb27262276d9de21cc6c9))
+
 ## [1.0.3](https://github.com/RedHatInsights/event-schemas-java/compare/v1.0.2...v1.0.3) (2023-02-15)
 
 
