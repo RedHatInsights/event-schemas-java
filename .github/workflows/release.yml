@@ -18,7 +18,7 @@ jobs:
   auto-merge-snapshot:
     needs: [ release ]
     runs-on: ubuntu-latest
-    if: '${{ needs.release.outputs.pr && contains(fromJSON(needs.release.outputs.pr).labels, "autorelease: snapshot") }}'
+    if: "${{ needs.release.outputs.pr && contains(fromJSON(needs.release.outputs.pr).labels, 'autorelease: snapshot') }}"
     steps:
       - id: auto-merge
         uses: "pascalgn/automerge-action@v0.15.6"
