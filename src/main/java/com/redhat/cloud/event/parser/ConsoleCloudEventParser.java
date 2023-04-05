@@ -73,7 +73,7 @@ public class ConsoleCloudEventParser {
         return fromJsonString(cloudEventJson, ConsoleCloudEvent.class);
     }
 
-    public <T extends ConsoleCloudEvent> T fromJsonString(String cloudEventJson, Class<T> consoleCloudEventClass) {
+    public <T extends GenericConsoleCloudEvent<?>> T fromJsonString(String cloudEventJson, Class<T> consoleCloudEventClass) {
         try {
             // Verify it's a valid Json
             JsonNode cloudEvent = objectMapper.readTree(cloudEventJson);

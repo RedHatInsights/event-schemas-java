@@ -1,6 +1,7 @@
 package com.redhat.cloud.event.parser;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.redhat.cloud.event.apps.advisor.v1.AdvisorRecommendations;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
@@ -14,6 +15,10 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class ConsoleCloudEventParserTest {
 
+    @JsonIgnoreProperties(ignoreUnknown = true)
+    public static class AdvisorCloudEvent extends GenericConsoleCloudEvent<AdvisorRecommendations> {
+    }
+
     @Test
     public void shouldParseCorrectCloudEvents() throws IOException {
         ConsoleCloudEventParser consoleCloudEventParser = new ConsoleCloudEventParser();
@@ -23,6 +28,20 @@ public class ConsoleCloudEventParserTest {
         assertEquals("com.redhat.console.advisor.new-recommendations", consoleCloudEvent.getType());
         assertEquals("org123", consoleCloudEvent.getOrgId());
         assertNull(consoleCloudEvent.getAccountId());
+    }
+
+    @Test
+    public void shouldParseWithCustomClass() throws IOException {
+        ConsoleCloudEventParser consoleCloudEventParser = new ConsoleCloudEventParser();
+
+        AdvisorCloudEvent advisorEvent = consoleCloudEventParser.fromJsonString(readSchema("cloud-events/advisor.json"), AdvisorCloudEvent.class);
+
+        assertEquals("com.redhat.console.advisor.new-recommendations", advisorEvent.getType());
+        assertEquals("org123", advisorEvent.getOrgId());
+        assertNull(advisorEvent.getAccountId());
+
+        assertEquals("rhel8desktop", advisorEvent.getData().getSystem().getDisplayName());
+        assertEquals("insights_core_egg_not_up2date|INSIGHTS_CORE_EGG_NOT_UP2DATE", advisorEvent.getData().getAdvisorRecommendations()[0].getRuleID());
     }
 
     @Test
