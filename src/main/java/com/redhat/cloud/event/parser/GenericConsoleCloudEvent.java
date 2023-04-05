@@ -1,6 +1,7 @@
 package com.redhat.cloud.event.parser;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.time.LocalDateTime;
@@ -9,27 +10,40 @@ import java.util.UUID;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class GenericConsoleCloudEvent<T> {
 
+    @JsonProperty("$schema")
+    private final String jsonSchema = "https://console.redhat.com/api/schemas/events/v1/events.json";
+
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     UUID id;
 
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     String source;
 
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     @JsonProperty("specversion")
     String specVersion;
 
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     String subject;
 
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     LocalDateTime time;
 
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     String type;
 
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     @JsonProperty("dataschema")
     String dataSchema;
 
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     T data;
 
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     @JsonProperty("redhatorgid")
     String orgId;
 
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     @JsonProperty("redhataccount")
     String accountId;
 

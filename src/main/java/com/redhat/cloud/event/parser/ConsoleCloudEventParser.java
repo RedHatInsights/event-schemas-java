@@ -16,6 +16,7 @@ import com.networknt.schema.ValidatorTypeCode;
 import com.networknt.schema.uri.URIFactory;
 import com.networknt.schema.uri.URLFactory;
 import com.redhat.cloud.event.core.v1.RHELSystem;
+import com.redhat.cloud.event.parser.modules.LocalDateTimeModule;
 import com.redhat.cloud.event.parser.validators.LocalDateTimeValidator;
 
 import java.io.IOException;
@@ -84,15 +85,31 @@ public class ConsoleCloudEventParser {
             }
 
             return objectMapper.treeToValue(cloudEvent, consoleCloudEventClass);
-        } catch (JsonProcessingException jme) {
-            throw new ConsoleCloudEventParsingException("Cloud event parsing failed for: " + cloudEventJson, jme);
+        } catch (JsonProcessingException jpe) {
+            throw new ConsoleCloudEventParsingException("Cloud event parsing failed for: " + cloudEventJson, jpe);
         }
     }
 
-    private static ObjectMapper buildObjectMapper() {
-        ObjectMapper objectMapper = new ObjectMapper();
-        objectMapper.registerModule(new JavaTimeModule());
-        return objectMapper;
+    public String toJson(GenericConsoleCloudEvent<?> consoleCloudEvent) {
+        try {
+            JsonNode node = objectMapper.valueToTree(consoleCloudEvent);
+            ValidationResult result = jsonSchema.walk(node, true);
+
+            if (result.getValidationMessages().size() > 0) {
+                throw new ConsoleCloudEventParsingException("Cloud event validation failed for: " + node + ". Failures: " + result.getValidationMessages().toString());
+            }
+
+            return objectMapper.writeValueAsString(node);
+        } catch (JsonProcessingException jpe) {
+            throw new ConsoleCloudEventParsingException("Cloud event serialization failed consoleCloudEvent: " + consoleCloudEvent, jpe);
+        }
+
+    }
+
+    public static ObjectMapper buildObjectMapper() {
+        return new ObjectMapper()
+                .registerModule(new JavaTimeModule())
+                .registerModule(new LocalDateTimeModule());
     }
 
     private JsonSchema getJsonSchema() {

@@ -7,7 +7,6 @@
   "subject": "urn:redhat:subject:console:rhel:08e8ec2b-6a79-4f1d-bea4-a438da139493",
   "time": "2018-04-05T17:31:00Z",
   "redhatorgid": "org123",
-  "redhatconsolebundle": "rhel",
   "dataschema": "https://console.redhat.com/api/schemas/apps/advisor/v1/advisor-recommendations.json",
   "data": {
     "system": {
