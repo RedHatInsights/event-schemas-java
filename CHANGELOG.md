@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.2.0](https://github.com/RedHatInsights/event-schemas-java/compare/v1.1.0...v1.2.0) (2023-04-05)
+
+
+### Features
+
+* Allows cloud event data to be any type ([8847f20](https://github.com/RedHatInsights/event-schemas-java/commit/8847f20b45d2ec8067e9806ba2bfb9792c4912a6))
+* Provide a json serializer ([ed8fa7e](https://github.com/RedHatInsights/event-schemas-java/commit/ed8fa7e2d8f21ef0d9ecabbed036b07639edf2b8))
+
 ## [1.1.0](https://github.com/RedHatInsights/event-schemas-java/compare/v1.0.3...v1.1.0) (2023-04-04)
 
 
