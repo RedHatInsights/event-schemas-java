@@ -28,7 +28,7 @@ jobs:
           MERGE_RETRIES: 10
           MERGE_RETRY_SLEEP: 10000
           PULL_REQUEST: ${{ fromJSON(needs.release.outputs.pr).number }}
-
+          GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
   publish:
     needs: [ release ]
     runs-on: ubuntu-latest
