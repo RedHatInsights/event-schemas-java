@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.JsonNodeFactory;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.redhat.cloud.event.apps.advisor.v1.AdvisorRecommendations;
+import com.redhat.cloud.event.core.v1.Notification;
 import com.redhat.cloud.event.parser.modules.LocalDateTimeModule;
 import org.junit.jupiter.api.Test;
 
@@ -13,7 +14,9 @@ import java.io.InputStream;
 import java.util.TreeMap;
 
 import static java.nio.charset.StandardCharsets.UTF_8;
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -75,6 +78,32 @@ public class ConsoleCloudEventParserTest {
         assertEquals(mapper.readTree(original), mapper.readTree(other));
 
         assertTrue(other.contains("https://console.redhat.com/api/schemas/events/v1/events.json"));
+    }
+
+    @Test
+    public void getWithClassFailsIfNotCompatible() throws IOException {
+        ConsoleCloudEventParser consoleCloudEventParser = new ConsoleCloudEventParser();
+        String original = readSchema("cloud-events/advisor.json");
+        ConsoleCloudEvent consoleCloudEvent = consoleCloudEventParser.fromJsonString(original);
+
+        assertFalse(consoleCloudEvent.getData(Notification.class).isPresent());
+    }
+
+    @Test
+    public void getWithClassWorksIfCompatibleData() throws IOException {
+        ConsoleCloudEventParser consoleCloudEventParser = new ConsoleCloudEventParser();
+        String original = readSchema("cloud-events/notification-recipients.json");
+        ConsoleCloudEvent consoleCloudEvent = consoleCloudEventParser.fromJsonString(original);
+        Notification notification = consoleCloudEvent.getData(Notification.class).orElseThrow();
+
+        assertNotNull(notification);
+        assertNotNull(notification.getNotificationRecipients());
+
+        assertTrue(notification.getNotificationRecipients().getOnlyAdmins());
+        assertFalse(notification.getNotificationRecipients().getIgnoreUserPreferences());
+
+        assertEquals(3, notification.getNotificationRecipients().getUsers().length);
+        assertArrayEquals(new String[]{ "foo", "bar", "x" }, notification.getNotificationRecipients().getUsers());
     }
 
     @Test

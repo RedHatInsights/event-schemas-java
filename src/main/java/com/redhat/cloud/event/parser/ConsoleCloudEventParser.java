@@ -71,7 +71,9 @@ public class ConsoleCloudEventParser {
     }
 
     public ConsoleCloudEvent fromJsonString(String cloudEventJson) {
-        return fromJsonString(cloudEventJson, ConsoleCloudEvent.class);
+        ConsoleCloudEvent consoleCloudEvent = fromJsonString(cloudEventJson, ConsoleCloudEvent.class);
+        consoleCloudEvent.setObjectMapper(this.objectMapper);
+        return consoleCloudEvent;
     }
 
     public <T extends GenericConsoleCloudEvent<?>> T fromJsonString(String cloudEventJson, Class<T> consoleCloudEventClass) {
