@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.3.0](https://github.com/RedHatInsights/event-schemas-java/compare/v1.2.0...v1.3.0) (2023-04-12)
+
+
+### Features
+
+* Allow to get the data as a different type ([c6e5eb4](https://github.com/RedHatInsights/event-schemas-java/commit/c6e5eb461f0710dec523556b79b3ddcffdf0d512))
+
 ## [1.2.0](https://github.com/RedHatInsights/event-schemas-java/compare/v1.1.0...v1.2.0) (2023-04-05)
 
 
