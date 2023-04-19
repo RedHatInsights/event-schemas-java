@@ -13,19 +13,16 @@ import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.OffsetDateTime;
 import java.time.ZoneOffset;
-import java.time.format.DateTimeFormatter;
 import java.time.temporal.TemporalAccessor;
 
 public class LocalDateTimeModule extends SimpleModule {
-
-    private static final DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ISO_INSTANT.withZone(ZoneOffset.UTC);
 
     private static class LocalDateTimeDeserializer extends JsonDeserializer<LocalDateTime> {
 
         @Override
         public LocalDateTime deserialize(JsonParser jsonParser, DeserializationContext deserializationContext) throws IOException {
             if (jsonParser.hasTokenId(JsonTokenId.ID_STRING)) {
-                TemporalAccessor temporalAccessor = dateTimeFormatter.parse(jsonParser.getText());
+                TemporalAccessor temporalAccessor = Constants.dateTimeFormatter.parse(jsonParser.getText());
                 return OffsetDateTime.from(temporalAccessor).atZoneSameInstant(ZoneOffset.UTC).toLocalDateTime();
             }
 
@@ -37,7 +34,7 @@ public class LocalDateTimeModule extends SimpleModule {
 
         @Override
         public void serialize(LocalDateTime dateTime, JsonGenerator jsonGenerator, SerializerProvider serializerProvider) throws IOException {
-            jsonGenerator.writeString(dateTime.atZone(ZoneOffset.UTC).format(dateTimeFormatter));
+            jsonGenerator.writeString(dateTime.atZone(ZoneOffset.UTC).format(Constants.dateTimeFormatter));
         }
 
     }

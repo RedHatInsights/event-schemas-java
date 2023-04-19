@@ -17,6 +17,7 @@ import com.networknt.schema.uri.URIFactory;
 import com.networknt.schema.uri.URLFactory;
 import com.redhat.cloud.event.core.v1.RHELSystem;
 import com.redhat.cloud.event.parser.modules.LocalDateTimeModule;
+import com.redhat.cloud.event.parser.modules.OffsetDateTimeModule;
 import com.redhat.cloud.event.parser.validators.LocalDateTimeValidator;
 
 import java.io.IOException;
@@ -111,6 +112,7 @@ public class ConsoleCloudEventParser {
     public static ObjectMapper buildObjectMapper() {
         return new ObjectMapper()
                 .registerModule(new JavaTimeModule())
+                .registerModule(new OffsetDateTimeModule())
                 .registerModule(new LocalDateTimeModule());
     }
 

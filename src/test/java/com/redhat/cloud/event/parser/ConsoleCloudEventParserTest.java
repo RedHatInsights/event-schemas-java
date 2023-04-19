@@ -81,6 +81,24 @@ public class ConsoleCloudEventParserTest {
     }
 
     @Test
+    public void shouldParseAndSerializeWithCustomClass() throws IOException {
+        ConsoleCloudEventParser consoleCloudEventParser = new ConsoleCloudEventParser();
+        String original = readSchema("cloud-events/advisor.json");
+
+        AdvisorCloudEvent consoleCloudEvent = consoleCloudEventParser.fromJsonString(original, AdvisorCloudEvent.class);
+        String other = consoleCloudEventParser.toJson(consoleCloudEvent);
+
+        assertNotNull(other);
+
+        ObjectMapper mapper = new ObjectMapper()
+                .setNodeFactory(new SortingNodeFactory())
+                .registerModule(new LocalDateTimeModule());
+
+        assertEquals(mapper.readTree(original), mapper.readTree(other));
+        assertTrue(other.contains("https://console.redhat.com/api/schemas/events/v1/events.json"));
+    }
+
+    @Test
     public void getWithClassFailsIfNotCompatible() throws IOException {
         ConsoleCloudEventParser consoleCloudEventParser = new ConsoleCloudEventParser();
         String original = readSchema("cloud-events/advisor.json");
