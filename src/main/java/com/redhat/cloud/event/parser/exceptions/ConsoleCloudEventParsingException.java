@@ -1,4 +1,4 @@
-package com.redhat.cloud.event.parser;
+package com.redhat.cloud.event.parser.exceptions;
 
 public class ConsoleCloudEventParsingException extends RuntimeException {
 

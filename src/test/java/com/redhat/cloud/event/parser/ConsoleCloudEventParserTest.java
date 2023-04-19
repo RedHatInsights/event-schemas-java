@@ -6,6 +6,7 @@ import com.fasterxml.jackson.databind.node.JsonNodeFactory;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.redhat.cloud.event.apps.advisor.v1.AdvisorRecommendations;
 import com.redhat.cloud.event.core.v1.Notification;
+import com.redhat.cloud.event.parser.exceptions.ConsoleCloudEventValidationException;
 import com.redhat.cloud.event.parser.modules.LocalDateTimeModule;
 import org.junit.jupiter.api.Test;
 
@@ -15,6 +16,7 @@ import java.util.TreeMap;
 
 import static java.nio.charset.StandardCharsets.UTF_8;
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -45,6 +47,23 @@ public class ConsoleCloudEventParserTest {
         assertEquals("com.redhat.console.advisor.new-recommendations", consoleCloudEvent.getType());
         assertEquals("org123", consoleCloudEvent.getOrgId());
         assertNull(consoleCloudEvent.getAccountId());
+    }
+
+    @Test
+    public void shouldValidateCorrectCloudEvents() throws IOException {
+        ConsoleCloudEventParser consoleCloudEventParser = new ConsoleCloudEventParser();
+
+        assertDoesNotThrow(() -> consoleCloudEventParser.validate(readSchema("cloud-events/advisor.json")));
+        assertDoesNotThrow(() -> consoleCloudEventParser.validate(readSchema("cloud-events/policies.json")));
+    }
+
+    @Test
+    public void shouldFailWithWrongDataschema() throws IOException {
+        ConsoleCloudEventParser consoleCloudEventParser = new ConsoleCloudEventParser();
+        assertThrows(
+                ConsoleCloudEventValidationException.class,
+                () -> consoleCloudEventParser.validate(readSchema("cloud-events/advisor-with-wrong-dataschema.json"))
+        );
     }
 
     @Test

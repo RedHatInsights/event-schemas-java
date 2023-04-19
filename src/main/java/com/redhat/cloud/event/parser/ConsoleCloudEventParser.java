@@ -16,6 +16,8 @@ import com.networknt.schema.ValidatorTypeCode;
 import com.networknt.schema.uri.URIFactory;
 import com.networknt.schema.uri.URLFactory;
 import com.redhat.cloud.event.core.v1.RHELSystem;
+import com.redhat.cloud.event.parser.exceptions.ConsoleCloudEventParsingException;
+import com.redhat.cloud.event.parser.exceptions.ConsoleCloudEventValidationException;
 import com.redhat.cloud.event.parser.modules.LocalDateTimeModule;
 import com.redhat.cloud.event.parser.validators.LocalDateTimeValidator;
 
@@ -76,15 +78,21 @@ public class ConsoleCloudEventParser {
         return consoleCloudEvent;
     }
 
+    public void validate(String cloudEventJson) {
+        try {
+            JsonNode cloudEvent = objectMapper.readTree(cloudEventJson);
+            validate(cloudEvent, jsonSchema);
+        } catch (JsonProcessingException jpe) {
+            throw new ConsoleCloudEventParsingException("Cloud event validation failed for: " + cloudEventJson, jpe);
+        }
+
+    }
+
     public <T extends GenericConsoleCloudEvent<?>> T fromJsonString(String cloudEventJson, Class<T> consoleCloudEventClass) {
         try {
             // Verify it's a valid Json
             JsonNode cloudEvent = objectMapper.readTree(cloudEventJson);
-            ValidationResult result = jsonSchema.walk(cloudEvent, true);
-
-            if (result.getValidationMessages().size() > 0) {
-                throw new ConsoleCloudEventParsingException("Cloud event validation failed for: " + cloudEventJson + ". Failures: " + result.getValidationMessages().toString());
-            }
+            validate(cloudEvent, jsonSchema);
 
             return objectMapper.treeToValue(cloudEvent, consoleCloudEventClass);
         } catch (JsonProcessingException jpe) {
@@ -95,11 +103,7 @@ public class ConsoleCloudEventParser {
     public String toJson(GenericConsoleCloudEvent<?> consoleCloudEvent) {
         try {
             JsonNode node = objectMapper.valueToTree(consoleCloudEvent);
-            ValidationResult result = jsonSchema.walk(node, true);
-
-            if (result.getValidationMessages().size() > 0) {
-                throw new ConsoleCloudEventParsingException("Cloud event validation failed for: " + node + ". Failures: " + result.getValidationMessages().toString());
-            }
+            validate(node, jsonSchema);
 
             return objectMapper.writeValueAsString(node);
         } catch (JsonProcessingException jpe) {
@@ -131,6 +135,14 @@ public class ConsoleCloudEventParser {
             );
         } catch (IOException ioe) {
             throw new JsonSchemaException(ioe);
+        }
+    }
+
+    private static void validate(JsonNode cloudEvent, JsonSchema jsonSchema) {
+        ValidationResult result = jsonSchema.walk(cloudEvent, true);
+
+        if (result.getValidationMessages().size() > 0) {
+            throw new ConsoleCloudEventValidationException("Cloud event validation failed for: " + cloudEvent, result.getValidationMessages());
         }
     }
 
