@@ -1,5 +1,19 @@
 # Changelog
 
+## [1.4.0](https://github.com/RedHatInsights/event-schemas-java/compare/v1.3.0...v1.4.0) (2023-04-20)
+
+
+### Features
+
+* add validate API ([e4c3740](https://github.com/RedHatInsights/event-schemas-java/commit/e4c37404f10991bafd366fec025e2fd112c948b1))
+
+
+### Bug Fixes
+
+* Bump api from `dd5d22c` to `41618fe` ([#111](https://github.com/RedHatInsights/event-schemas-java/issues/111)) ([cbd0b03](https://github.com/RedHatInsights/event-schemas-java/commit/cbd0b03638d95ebb563e81d32563e3d6c76fca48))
+* Correctly parse OffsetDateTimes ([711ca46](https://github.com/RedHatInsights/event-schemas-java/commit/711ca460e2f754ffaf34bc29dcbc2a78f372edbb))
+* Regenerate types ([649d47c](https://github.com/RedHatInsights/event-schemas-java/commit/649d47c2f5c383c1d77c92fa5540bd9c5e8f290e))
+
 ## [1.3.0](https://github.com/RedHatInsights/event-schemas-java/compare/v1.2.0...v1.3.0) (2023-04-12)
 
 
