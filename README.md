@@ -10,6 +10,8 @@ Getting started
 This library is released on [maven central](https://central.sonatype.com/artifact/com.redhat.cloud.event/event-schemas/1.3.0/versions), 
 as such, as you can include the following in your `pom.xml` if you are using maven:
 
+<!--- x-release-please-start-version -->
+
 ```xml
 <dependency>
   <groupId>com.redhat.cloud.event</groupId>
@@ -17,6 +19,8 @@ as such, as you can include the following in your `pom.xml` if you are using mav
   <version>1.3.1</version>
 </dependency>
 ```
+
+<!--- x-release-please-end -->
 
 The library contains the [ConsoleCloudEventParser](https://redhatinsights.github.io/event-schemas-java/com/redhat/cloud/event/parser/ConsoleCloudEventParser.html) 
 with methods to transform a String to a [ConsoleCloudEvent](https://redhatinsights.github.io/event-schemas-java/com/redhat/cloud/event/parser/ConsoleCloudEvent.html)
