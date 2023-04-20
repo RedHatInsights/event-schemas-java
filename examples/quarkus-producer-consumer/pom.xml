@@ -41,7 +41,7 @@
     <dependency>
       <groupId>com.redhat.cloud.event</groupId>
       <artifactId>event-schemas</artifactId>
-      <version>0.1-SNAPSHOT</version>
+      <version>${version}</version>
     </dependency>
     <dependency>
       <groupId>io.quarkus</groupId>
