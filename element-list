@@ -1,0 +1,8 @@
+com.redhat.cloud.event.apps.advisor.v1
+com.redhat.cloud.event.apps.policies.v1
+com.redhat.cloud.event.apps.repositories.v1
+com.redhat.cloud.event.core.v1
+com.redhat.cloud.event.parser
+com.redhat.cloud.event.parser.exceptions
+com.redhat.cloud.event.parser.modules
+com.redhat.cloud.event.parser.validators
