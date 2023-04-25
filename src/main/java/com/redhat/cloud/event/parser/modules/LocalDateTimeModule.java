@@ -22,7 +22,7 @@ public class LocalDateTimeModule extends SimpleModule {
         @Override
         public LocalDateTime deserialize(JsonParser jsonParser, DeserializationContext deserializationContext) throws IOException {
             if (jsonParser.hasTokenId(JsonTokenId.ID_STRING)) {
-                TemporalAccessor temporalAccessor = Constants.dateTimeFormatter.parse(jsonParser.getText());
+                TemporalAccessor temporalAccessor = Constants.dateTimeFormatterWriter.parse(jsonParser.getText());
                 return OffsetDateTime.from(temporalAccessor).atZoneSameInstant(ZoneOffset.UTC).toLocalDateTime();
             }
 
@@ -34,7 +34,7 @@ public class LocalDateTimeModule extends SimpleModule {
 
         @Override
         public void serialize(LocalDateTime dateTime, JsonGenerator jsonGenerator, SerializerProvider serializerProvider) throws IOException {
-            jsonGenerator.writeString(dateTime.atZone(ZoneOffset.UTC).format(Constants.dateTimeFormatter));
+            jsonGenerator.writeString(dateTime.atZone(ZoneOffset.UTC).format(Constants.dateTimeFormatterReader));
         }
 
     }

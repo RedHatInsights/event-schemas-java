@@ -20,7 +20,7 @@ public class OffsetDateTimeModule extends SimpleModule {
         @Override
         public OffsetDateTime deserialize(JsonParser jsonParser, DeserializationContext deserializationContext) throws IOException {
             if (jsonParser.hasTokenId(JsonTokenId.ID_STRING)) {
-                TemporalAccessor temporalAccessor = Constants.dateTimeFormatter.parse(jsonParser.getText());
+                TemporalAccessor temporalAccessor = Constants.dateTimeFormatterWriter.parse(jsonParser.getText());
                 return OffsetDateTime.from(temporalAccessor);
             }
 
@@ -32,7 +32,7 @@ public class OffsetDateTimeModule extends SimpleModule {
 
         @Override
         public void serialize(OffsetDateTime dateTime, JsonGenerator jsonGenerator, SerializerProvider serializerProvider) throws IOException {
-            jsonGenerator.writeString(dateTime.format(Constants.dateTimeFormatter));
+            jsonGenerator.writeString(dateTime.format(Constants.dateTimeFormatterReader));
         }
 
     }

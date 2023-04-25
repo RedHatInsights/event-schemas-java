@@ -8,6 +8,7 @@ import com.redhat.cloud.event.apps.advisor.v1.AdvisorRecommendations;
 import com.redhat.cloud.event.core.v1.Notification;
 import com.redhat.cloud.event.parser.exceptions.ConsoleCloudEventValidationException;
 import com.redhat.cloud.event.parser.modules.LocalDateTimeModule;
+import com.redhat.cloud.event.parser.modules.OffsetDateTimeModule;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
@@ -111,7 +112,11 @@ public class ConsoleCloudEventParserTest {
 
         ObjectMapper mapper = new ObjectMapper()
                 .setNodeFactory(new SortingNodeFactory())
+                .registerModule(new OffsetDateTimeModule())
                 .registerModule(new LocalDateTimeModule());
+
+        // It correctly parses dates with offsets as 2021-03-13T18:44:00+00:00 but writes them as "2021-03-13T18:44:00Z"
+        original = original.replace("+00:00", "Z");
 
         assertEquals(mapper.readTree(original), mapper.readTree(other));
         assertTrue(other.contains("https://console.redhat.com/api/schemas/events/v1/events.json"));
