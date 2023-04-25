@@ -14,6 +14,7 @@ jobs:
         uses: google-github-actions/release-please-action@v3
         with:
           release-type: maven
+          token: ${{ secrets.NACHO_BOT_TOKEN }}
           package-name: com.redhat.cloud.event.event-schemas
           extra-files: |
             README.md
@@ -30,7 +31,7 @@ jobs:
           MERGE_RETRIES: 10
           MERGE_RETRY_SLEEP: 10000
           PULL_REQUEST: ${{ fromJSON(needs.release.outputs.pr).number }}
-          GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
+          GITHUB_TOKEN: "${{ secrets.NACHO_BOT_TOKEN }}"
   publish:
     needs: [ release ]
     runs-on: ubuntu-latest
@@ -39,6 +40,7 @@ jobs:
       - uses: actions/checkout@v3
         with:
           submodules: true
+          token: ${{ secrets.NACHO_BOT_TOKEN }}
       - name: Set up Maven Central Repository
         uses: actions/setup-java@v3
         with:
