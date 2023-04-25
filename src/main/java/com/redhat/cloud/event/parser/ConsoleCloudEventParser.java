@@ -9,6 +9,7 @@ import com.networknt.schema.JsonMetaSchema;
 import com.networknt.schema.JsonSchema;
 import com.networknt.schema.JsonSchemaException;
 import com.networknt.schema.JsonSchemaFactory;
+import com.networknt.schema.NonValidationKeyword;
 import com.networknt.schema.SchemaValidatorsConfig;
 import com.networknt.schema.SpecVersion;
 import com.networknt.schema.ValidationResult;
@@ -25,6 +26,7 @@ import com.redhat.cloud.event.parser.validators.LocalDateTimeValidator;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URI;
+import java.util.List;
 
 public class ConsoleCloudEventParser {
 
@@ -154,6 +156,11 @@ public class ConsoleCloudEventParser {
         JsonMetaSchema overrideDateTimeValidator = new JsonMetaSchema.Builder(JsonMetaSchema.getV7().getUri())
                 .idKeyword(ID)
                 .addKeywords(ValidatorTypeCode.getNonFormatKeywords(SpecVersion.VersionFlag.V7))
+                .addKeywords(List.of(
+                        new NonValidationKeyword("examples"),
+                        new NonValidationKeyword("$schema"),
+                        new NonValidationKeyword("definitions")
+                ))
                 .addFormats(JsonMetaSchema.COMMON_BUILTIN_FORMATS)
                 .addFormat(new LocalDateTimeValidator())
                 .build();
