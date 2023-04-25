@@ -1,5 +1,14 @@
 # Changelog
 
+## [1.4.1](https://github.com/RedHatInsights/event-schemas-java/compare/v1.4.0...v1.4.1) (2023-04-25)
+
+
+### Bug Fixes
+
+* Add keywords to ignore list for validation ([78b7b4c](https://github.com/RedHatInsights/event-schemas-java/commit/78b7b4cdc1e7cc47422b3f8579ce70074d00c68e))
+* Allow to parse dates with offsets ([b99ae08](https://github.com/RedHatInsights/event-schemas-java/commit/b99ae08d599ddcfb1d425035b54a22b5f988bd03))
+* **deps:** bump jackson-bom from 2.14.2 to 2.15.0 ([b9dddce](https://github.com/RedHatInsights/event-schemas-java/commit/b9dddcef7cc5fecde123a94950a42d14c3463121))
+
 ## [1.4.0](https://github.com/RedHatInsights/event-schemas-java/compare/v1.3.0...v1.4.0) (2023-04-20)
 
 
