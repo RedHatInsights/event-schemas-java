@@ -5,5 +5,6 @@ import java.time.format.DateTimeFormatter;
 
 public class Constants {
 
-    static final DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ISO_INSTANT.withZone(ZoneOffset.UTC);
+    static final DateTimeFormatter dateTimeFormatterReader = DateTimeFormatter.ISO_INSTANT.withZone(ZoneOffset.UTC);
+    static final DateTimeFormatter dateTimeFormatterWriter = DateTimeFormatter.ISO_OFFSET_DATE_TIME;
 }
