@@ -23,12 +23,23 @@ class StaticJSONSchemaStore extends JSONSchemaStore {
   }
 }
 
+const ignoredFiles = [
+  ["core", "common.json"],
+  ["core", "empty.json"]
+];
+
 async function generateFiles(repoRoot, subdir) {
   const versions = await fsPromises.readdir(`${repoRoot}/api/schemas/${subdir}`);
   for (const version of versions) {
     const schemas = await fsPromises.readdir(`${repoRoot}/api/schemas/${subdir}/${version}`);
+    schemas_loop:
     for (const schema of schemas) {
-      if (schema === 'empty.json' && subdir === 'core') continue // skip empty, quicktype generates bad code for this
+      for ([ignoredSubdir, ignoredSchema] of ignoredFiles) {
+        if (schema === ignoredSchema && subdir === ignoredSubdir) {
+          continue schemas_loop;
+        }
+      }
+
       const schemaPath = `${repoRoot}/api/schemas/${subdir}/${version}/${schema}`;
       const jsonSchemaString = await fsPromises.readFile(schemaPath, {encoding: 'utf8'});
       const filename = path.basename(schemaPath);
@@ -47,8 +58,8 @@ async function generateFiles(repoRoot, subdir) {
 
 async function generateJavaFiles(subdir, version, inputData, _schema) {
   const subPackage = `${subdir.replaceAll('/', '.')}.${version}`;
-  const packageName = `${BASE_JAVA_PACKAGE}.${subPackage}`;
-  const outputPath = `${BASE_JAVA_SRC_PATH}/${packageName.replaceAll('.', '/')}`;
+  const packageName = `${BASE_JAVA_PACKAGE}.${subPackage.replaceAll('-', '')}`;
+  const outputPath = `${BASE_JAVA_SRC_PATH}/${packageName.replaceAll('-', '').replaceAll('.', '/')}`;
   const lang = new CloudEventJavaLanguage();
   const result = await quicktypeMultiFile({
     inputData,
