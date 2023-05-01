@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.4.3](https://github.com/RedHatInsights/event-schemas-java/compare/v1.4.2...v1.4.3) (2023-05-01)
+
+
+### Bug Fixes
+
+* **deps:** bump api from `3d29d73` to `359e3bf` ([78856e3](https://github.com/RedHatInsights/event-schemas-java/commit/78856e3c74746ba29b35023ca5f0b169314105f6))
+* **deps:** bump json-schema-validator from 1.0.80 to 1.0.81 ([56a6201](https://github.com/RedHatInsights/event-schemas-java/commit/56a62015298e8e74e5770bf9097fe6e76c9e96cc))
+
 ## [1.4.2](https://github.com/RedHatInsights/event-schemas-java/compare/v1.4.1...v1.4.2) (2023-04-27)
 
 
