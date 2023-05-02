@@ -16,7 +16,7 @@ You can include the following in your `pom.xml` if you are using Maven:
 <dependency>
   <groupId>com.redhat.cloud.event</groupId>
   <artifactId>event-schemas</artifactId>
-  <version>1.4.4</version>
+  <version>1.4.5-SNAPSHOT</version>
 </dependency>
 ```
 
