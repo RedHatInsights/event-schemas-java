@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.4.4](https://github.com/RedHatInsights/event-schemas-java/compare/v1.4.3...v1.4.4) (2023-05-02)
+
+
+### Bug Fixes
+
+* Regenerate types ([8c07a58](https://github.com/RedHatInsights/event-schemas-java/commit/8c07a58b5900e1f2d6c19f415256824b0a2db178))
+* Remove hypens from package names ([26ea95e](https://github.com/RedHatInsights/event-schemas-java/commit/26ea95e64d17bd138c8bd5fb96424a597224130b))
+
 ## [1.4.3](https://github.com/RedHatInsights/event-schemas-java/compare/v1.4.2...v1.4.3) (2023-05-01)
 
 
