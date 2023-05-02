@@ -1,4 +1,5 @@
 com.redhat.cloud.event.apps.advisor.v1
+com.redhat.cloud.event.apps.exportservice.v1
 com.redhat.cloud.event.apps.policies.v1
 com.redhat.cloud.event.apps.repositories.v1
 com.redhat.cloud.event.core.v1
