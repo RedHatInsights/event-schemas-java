@@ -5,7 +5,7 @@ import java.time.OffsetDateTime;
 
 public class Repositories {
     private String distributionArch;
-    private Object[] distributionVersions;
+    private String[] distributionVersions;
     private Long failedIntrospectionsCount;
     private String gpgKey;
     private String lastIntrospectionError;
@@ -28,10 +28,10 @@ public class Repositories {
 
     @JsonProperty("distribution_versions")
     @JsonInclude(JsonInclude.Include.NON_NULL)
-    public Object[] getDistributionVersions() { return distributionVersions; }
+    public String[] getDistributionVersions() { return distributionVersions; }
     @JsonProperty("distribution_versions")
     @JsonInclude(JsonInclude.Include.NON_NULL)
-    public void setDistributionVersions(Object[] value) { this.distributionVersions = value; }
+    public void setDistributionVersions(String[] value) { this.distributionVersions = value; }
 
     @JsonProperty("failed_introspections_count")
     @JsonInclude(JsonInclude.Include.NON_NULL)
