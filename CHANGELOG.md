@@ -1,5 +1,15 @@
 # Changelog
 
+## [1.4.5](https://github.com/RedHatInsights/event-schemas-java/compare/v1.4.4...v1.4.5) (2023-05-10)
+
+
+### Bug Fixes
+
+* **deps:** bump api from `359e3bf` to `57389f9` ([2b1070a](https://github.com/RedHatInsights/event-schemas-java/commit/2b1070aab2aee6293cf9c5635d3df7a4246dca78))
+* **deps:** bump api from `57389f9` to `6d087fa` ([d1e0753](https://github.com/RedHatInsights/event-schemas-java/commit/d1e0753b9ac514abb0109e96a50d1494285d3c8d))
+* **deps:** bump maven-surefire-plugin from 3.0.0 to 3.1.0 ([eb8103f](https://github.com/RedHatInsights/event-schemas-java/commit/eb8103f882b406b2fcd684878caf96f3a476be08))
+* Regenerate types ([90b43f3](https://github.com/RedHatInsights/event-schemas-java/commit/90b43f3804552a92a0c008eab9daab3d1cbece0a))
+
 ## [1.4.4](https://github.com/RedHatInsights/event-schemas-java/compare/v1.4.3...v1.4.4) (2023-05-02)
 
 
