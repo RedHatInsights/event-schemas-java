@@ -7,8 +7,9 @@ import java.util.UUID;
 /**
  * A request for data to be exported
  */
-public class ExportRequestClass {
+public class ResourceRequestClass {
     private String application;
+    private UUID exportRequestUUID;
     private Map<String, Object> filters;
     private Format format;
     private String resource;
@@ -24,6 +25,16 @@ public class ExportRequestClass {
     @JsonProperty("application")
     @JsonInclude(JsonInclude.Include.NON_NULL)
     public void setApplication(String value) { this.application = value; }
+
+    /**
+     * The unique identifier of the export request that triggered the resource request
+     */
+    @JsonProperty("export_request_uuid")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    public UUID getExportRequestUUID() { return exportRequestUUID; }
+    @JsonProperty("export_request_uuid")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    public void setExportRequestUUID(UUID value) { this.exportRequestUUID = value; }
 
     /**
      * The filters to be applied to the data
@@ -56,7 +67,7 @@ public class ExportRequestClass {
     public void setResource(String value) { this.resource = value; }
 
     /**
-     * A unique identifier for the request
+     * A unique identifier for the resource request
      */
     @JsonProperty("uuid")
     @JsonInclude(JsonInclude.Include.NON_NULL)

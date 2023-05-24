@@ -10,7 +10,7 @@
 //
 // Then you can deserialize a JSON string with
 //
-//     ExportRequest data = Converter.fromJsonString(jsonString);
+//     ResourceRequest data = Converter.fromJsonString(jsonString);
 
 package com.redhat.cloud.event.apps.exportservice.v1;
 
@@ -60,11 +60,11 @@ public class Converter {
     }
     // Serialize/deserialize helpers
 
-    public static ExportRequest fromJsonString(String json) throws IOException {
+    public static ResourceRequest fromJsonString(String json) throws IOException {
         return getObjectReader().readValue(json);
     }
 
-    public static String toJsonString(ExportRequest obj) throws JsonProcessingException {
+    public static String toJsonString(ResourceRequest obj) throws JsonProcessingException {
         return getObjectWriter().writeValueAsString(obj);
     }
 
@@ -85,8 +85,8 @@ public class Converter {
             }
         });
         mapper.registerModule(module);
-        reader = mapper.readerFor(ExportRequest.class);
-        writer = mapper.writerFor(ExportRequest.class);
+        reader = mapper.readerFor(ResourceRequest.class);
+        writer = mapper.writerFor(ResourceRequest.class);
     }
 
     private static ObjectReader getObjectReader() {
