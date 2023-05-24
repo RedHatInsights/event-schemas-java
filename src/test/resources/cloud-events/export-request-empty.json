@@ -1,0 +1,12 @@
+{
+  "id": "d72a5b4f-2eaf-4476-8238-6dfb42dd02fe",
+  "source": "urn:redhat:source:console:app:export-service",
+  "subject": "urn:redhat:subject:export-service:request:1564b30b-ba6a-4acb-bd43-4bd9d07b3fae",
+  "time": "2023-05-24T06:04:07.321385787Z",
+  "type": "com.redhat.console.export-service.request",
+  "$schema": "https://console.redhat.com/api/schemas/events/v1/events.json",
+  "specversion": "1.0",
+  "dataschema": "https://console.redhat.com/api/schemas/core/v1/empty.json",
+  "redhatorgid": "default-org-id",
+  "redhataccount": "default-account-id"
+}

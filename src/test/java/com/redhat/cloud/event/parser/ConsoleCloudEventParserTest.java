@@ -5,14 +5,17 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.JsonNodeFactory;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.redhat.cloud.event.apps.advisor.v1.AdvisorRecommendations;
+import com.redhat.cloud.event.apps.exportservice.v1.ExportRequest;
 import com.redhat.cloud.event.core.v1.Notification;
 import com.redhat.cloud.event.parser.exceptions.ConsoleCloudEventValidationException;
 import com.redhat.cloud.event.parser.modules.LocalDateTimeModule;
 import com.redhat.cloud.event.parser.modules.OffsetDateTimeModule;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Optional;
 import java.util.TreeMap;
 
 import static java.nio.charset.StandardCharsets.UTF_8;
@@ -159,6 +162,16 @@ public class ConsoleCloudEventParserTest {
         ConsoleCloudEventParser consoleCloudEventParser = new ConsoleCloudEventParser();
 
         assertThrows(RuntimeException.class, () -> consoleCloudEventParser.fromJsonString("hello world"));
+    }
+
+    @Test
+    public void shouldReturnEmptyOptional() throws IOException {
+        ConsoleCloudEventParser consoleCloudEventParser = new ConsoleCloudEventParser();
+
+        final ConsoleCloudEvent cloudEvent = consoleCloudEventParser.fromJsonString(readSchema("cloud-events/export-request-empty.json"));
+        final Optional<ExportRequest> exportRequest = cloudEvent.getData(ExportRequest.class);
+
+        Assertions.assertTrue(exportRequest.isEmpty());
     }
 
     private String readSchema(String path) throws IOException {

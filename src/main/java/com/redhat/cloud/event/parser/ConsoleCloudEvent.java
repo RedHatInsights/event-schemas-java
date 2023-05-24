@@ -18,7 +18,7 @@ public class ConsoleCloudEvent extends GenericConsoleCloudEvent<JsonNode> {
 
     public <T> Optional<T> getData(Class<T> asClass) {
         try {
-            return Optional.of(this.objectMapper.treeToValue(this.getData(), asClass));
+            return Optional.ofNullable(this.objectMapper.treeToValue(this.getData(), asClass));
         } catch (JsonProcessingException jpe) {
             return Optional.empty();
         }
