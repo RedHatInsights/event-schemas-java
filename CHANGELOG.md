@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.4.7](https://github.com/RedHatInsights/event-schemas-java/compare/v1.4.6...v1.4.7) (2023-05-24)
+
+
+### Bug Fixes
+
+* **deps:** bump api from `6d087fa` to `bb5a18a` ([dd96628](https://github.com/RedHatInsights/event-schemas-java/commit/dd966283a42920c1494e0f8e5a592ed4ca6fc5c5))
+* Regenerate types ([97c4a5b](https://github.com/RedHatInsights/event-schemas-java/commit/97c4a5b36819646ac14947c2d1330f61ba01aad0))
+
 ## [1.4.6](https://github.com/RedHatInsights/event-schemas-java/compare/v1.4.5...v1.4.6) (2023-05-24)
 
 
