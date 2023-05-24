@@ -5,7 +5,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.JsonNodeFactory;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.redhat.cloud.event.apps.advisor.v1.AdvisorRecommendations;
-import com.redhat.cloud.event.apps.exportservice.v1.ExportRequest;
+import com.redhat.cloud.event.apps.exportservice.v1.ResourceRequest;
 import com.redhat.cloud.event.core.v1.Notification;
 import com.redhat.cloud.event.parser.exceptions.ConsoleCloudEventValidationException;
 import com.redhat.cloud.event.parser.modules.LocalDateTimeModule;
@@ -169,7 +169,7 @@ public class ConsoleCloudEventParserTest {
         ConsoleCloudEventParser consoleCloudEventParser = new ConsoleCloudEventParser();
 
         final ConsoleCloudEvent cloudEvent = consoleCloudEventParser.fromJsonString(readSchema("cloud-events/export-request-empty.json"));
-        final Optional<ExportRequest> exportRequest = cloudEvent.getData(ExportRequest.class);
+        final Optional<ResourceRequest> exportRequest = cloudEvent.getData(ResourceRequest.class);
 
         Assertions.assertTrue(exportRequest.isEmpty());
     }
