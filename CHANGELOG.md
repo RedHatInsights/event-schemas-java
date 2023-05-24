@@ -1,5 +1,15 @@
 # Changelog
 
+## [1.4.6](https://github.com/RedHatInsights/event-schemas-java/compare/v1.4.5...v1.4.6) (2023-05-24)
+
+
+### Bug Fixes
+
+* **deps:** bump jackson-bom from 2.15.0 to 2.15.1 ([b37a675](https://github.com/RedHatInsights/event-schemas-java/commit/b37a6756d1b3f4cd67be6495bba35ee9f6010074))
+* **deps:** bump json-schema-validator from 1.0.81 to 1.0.82 ([b7268c4](https://github.com/RedHatInsights/event-schemas-java/commit/b7268c4daa66e661978ab4eeee1ff35730356b48))
+* **deps:** bump maven-source-plugin from 3.2.1 to 3.3.0 ([0e5fa5e](https://github.com/RedHatInsights/event-schemas-java/commit/0e5fa5e5c5bc34efebcc7a6c0e9085f991f95ca7))
+* empty data doesn't get deserialized as an empty optional ([e8ddf46](https://github.com/RedHatInsights/event-schemas-java/commit/e8ddf46fb00c1e9c7fe6d2dd0d73e68dde32daec))
+
 ## [1.4.5](https://github.com/RedHatInsights/event-schemas-java/compare/v1.4.4...v1.4.5) (2023-05-10)
 
 
