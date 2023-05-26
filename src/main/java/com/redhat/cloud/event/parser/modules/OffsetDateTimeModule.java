@@ -10,8 +10,9 @@ import com.fasterxml.jackson.databind.SerializerProvider;
 import com.fasterxml.jackson.databind.module.SimpleModule;
 
 import java.io.IOException;
+import java.time.LocalDateTime;
 import java.time.OffsetDateTime;
-import java.time.temporal.TemporalAccessor;
+import java.time.ZoneOffset;
 
 public class OffsetDateTimeModule extends SimpleModule {
 
@@ -20,8 +21,8 @@ public class OffsetDateTimeModule extends SimpleModule {
         @Override
         public OffsetDateTime deserialize(JsonParser jsonParser, DeserializationContext deserializationContext) throws IOException {
             if (jsonParser.hasTokenId(JsonTokenId.ID_STRING)) {
-                TemporalAccessor temporalAccessor = Constants.dateTimeFormatterWriter.parse(jsonParser.getText());
-                return OffsetDateTime.from(temporalAccessor);
+                LocalDateTime localDateTime = LocalDateTime.parse(jsonParser.getText(), Constants.dateTimeFormatterWriter);
+                return localDateTime.atOffset(ZoneOffset.UTC);
             }
 
             return (OffsetDateTime) deserializationContext.handleUnexpectedToken(OffsetDateTime.class, jsonParser);
