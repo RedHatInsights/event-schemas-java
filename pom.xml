@@ -65,10 +65,11 @@
       <groupId>com.fasterxml.jackson.datatype</groupId>
       <artifactId>jackson-datatype-jsr310</artifactId>
     </dependency>
+    <!-- Downgraded because of a bug. More details in https://issues.redhat.com/browse/RHCLOUD-26089 -->
     <dependency>
       <groupId>com.networknt</groupId>
       <artifactId>json-schema-validator</artifactId>
-      <version>1.0.82</version>
+      <version>1.0.81</version>
     </dependency>
 
     <!-- Test dependencies -->
