@@ -51,6 +51,13 @@ public class DateTimeModuleTest {
     }
 
     @Test
+    public void noOffsetTestWithoutZ() throws JsonProcessingException {
+        Helper helper = objectMapper.readValue("{\"localDateTime\":\"2023-05-25T14:09:40\",\"offsetDateTime\":\"2023-05-25T14:09:40\"}", Helper.class);
+        assertEquals(LocalDateTime.of(2023, 5, 25, 14, 9, 40, 0), helper.localDateTime);
+        assertEquals(OffsetDateTime.of(2023, 5, 25, 14, 9, 40, 0, ZoneOffset.UTC), helper.offsetDateTime);
+    }
+
+    @Test
     public void withPositiveOffset() throws JsonProcessingException {
         Helper helper = new Helper();
         helper.offsetDateTime = OffsetDateTime.parse("2021-03-13T18:44:00+01:00");
@@ -96,5 +103,28 @@ public class DateTimeModuleTest {
 
         assertEquals(LocalDateTime.of(2021, 3, 13, 18, 44, 0), helper.localDateTime);
         assertEquals(OffsetDateTime.of(2021, 3, 14, 0, 44, 0, 0, ZoneOffset.UTC), helper.offsetDateTime);
+    }
+
+    @Test
+    public void withDecimals() throws JsonProcessingException {
+        Helper helper = new Helper();
+        helper.offsetDateTime = OffsetDateTime.parse("2021-03-13T18:44:00.123456-06:00");
+        helper.localDateTime = LocalDateTime.parse("2021-03-13T18:44:00.12346");
+
+        String serialized = objectMapper.writeValueAsString(helper);
+
+        assertEquals("{\"localDateTime\":\"2021-03-13T18:44:00.123460Z\",\"offsetDateTime\":\"2021-03-14T00:44:00.123456Z\"}", serialized);
+
+        helper = objectMapper.readValue(serialized, Helper.class);
+
+        assertEquals(LocalDateTime.of(2021, 3, 13, 18, 44, 0, 123460000), helper.localDateTime);
+        assertEquals(OffsetDateTime.of(2021, 3, 14, 0, 44, 0, 123456000, ZoneOffset.UTC), helper.offsetDateTime);
+    }
+
+    @Test
+    public void withDecimalsWithoutZ() throws JsonProcessingException {
+        Helper helper = objectMapper.readValue("{\"localDateTime\":\"2023-05-25T14:09:40.422316497\",\"offsetDateTime\":\"2023-05-25T14:09:40.422316497\"}", Helper.class);
+        assertEquals(LocalDateTime.of(2023, 5, 25, 14, 9, 40, 422316497), helper.localDateTime);
+        assertEquals(OffsetDateTime.of(2023, 5, 25, 14, 9, 40, 422316497, ZoneOffset.UTC), helper.offsetDateTime);
     }
 }

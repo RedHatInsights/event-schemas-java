@@ -11,9 +11,7 @@ import com.fasterxml.jackson.databind.module.SimpleModule;
 
 import java.io.IOException;
 import java.time.LocalDateTime;
-import java.time.OffsetDateTime;
 import java.time.ZoneOffset;
-import java.time.temporal.TemporalAccessor;
 
 public class LocalDateTimeModule extends SimpleModule {
 
@@ -22,8 +20,7 @@ public class LocalDateTimeModule extends SimpleModule {
         @Override
         public LocalDateTime deserialize(JsonParser jsonParser, DeserializationContext deserializationContext) throws IOException {
             if (jsonParser.hasTokenId(JsonTokenId.ID_STRING)) {
-                TemporalAccessor temporalAccessor = Constants.dateTimeFormatterWriter.parse(jsonParser.getText());
-                return OffsetDateTime.from(temporalAccessor).atZoneSameInstant(ZoneOffset.UTC).toLocalDateTime();
+                return LocalDateTime.parse(jsonParser.getText(), Constants.dateTimeFormatterWriter);
             }
 
             return (LocalDateTime) deserializationContext.handleUnexpectedToken(LocalDateTime.class, jsonParser);
