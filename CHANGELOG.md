@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.4.8](https://github.com/RedHatInsights/event-schemas-java/compare/v1.4.7...v1.4.8) (2023-05-27)
+
+
+### Bug Fixes
+
+* downgrade "json-schema-validator" dependency ([#171](https://github.com/RedHatInsights/event-schemas-java/issues/171)) ([51b3814](https://github.com/RedHatInsights/event-schemas-java/commit/51b3814b09e0f59957dfc29fe96645b901a0a3f5))
+* Upgrade json-schema-validator to 1.0.83 ([#174](https://github.com/RedHatInsights/event-schemas-java/issues/174)) ([d720b53](https://github.com/RedHatInsights/event-schemas-java/commit/d720b53e1774f7ddfff13655ba10088d8c0bfda0))
+
 ## [1.4.7](https://github.com/RedHatInsights/event-schemas-java/compare/v1.4.6...v1.4.7) (2023-05-24)
 
 
