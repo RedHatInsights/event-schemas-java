@@ -97,4 +97,27 @@ public class DateTimeModuleTest {
         assertEquals(LocalDateTime.of(2021, 3, 13, 18, 44, 0), helper.localDateTime);
         assertEquals(OffsetDateTime.of(2021, 3, 14, 0, 44, 0, 0, ZoneOffset.UTC), helper.offsetDateTime);
     }
+
+    @Test
+    public void withNanoseconds() throws JsonProcessingException {
+        Helper helper = new Helper();
+        helper.localDateTime = LocalDateTime.parse("2023-05-10T06:02:53.704467873");
+
+        String serialized = objectMapper.writeValueAsString(helper);
+
+        assertEquals("{\"localDateTime\":\"2023-05-10T06:02:53.704467873Z\",\"offsetDateTime\":null}", serialized);
+
+        assertEquals(LocalDateTime.of(2023, 5, 10, 6, 2, 53, 704467873), helper.localDateTime);
+    }
+
+    @Test
+    public void parseWithNanoseconds() throws JsonProcessingException {
+        final Helper parsed = objectMapper.readValue(
+            "{\"localDateTime\":\"2023-05-10T06:02:53.704467873\",\"offsetDateTime\":\"2023-05-10T06:02:53.704467873Z\"}",
+            Helper.class
+        );
+
+        assertEquals(LocalDateTime.of(2023, 5, 10, 6, 2, 53, 704467873), parsed.localDateTime);
+        assertEquals(OffsetDateTime.of(2023, 5, 10, 6, 2, 53, 704467873, ZoneOffset.UTC), parsed.offsetDateTime);
+    }
 }

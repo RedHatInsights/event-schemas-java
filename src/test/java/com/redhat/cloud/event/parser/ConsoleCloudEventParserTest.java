@@ -1,9 +1,13 @@
 package com.redhat.cloud.event.parser;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.databind.node.JsonNodeFactory;
 import com.fasterxml.jackson.databind.node.ObjectNode;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.redhat.cloud.event.apps.advisor.v1.AdvisorRecommendations;
 import com.redhat.cloud.event.apps.exportservice.v1.ResourceRequest;
 import com.redhat.cloud.event.core.v1.Notification;
@@ -15,8 +19,11 @@ import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.time.LocalDateTime;
+import java.time.ZoneOffset;
 import java.util.Optional;
 import java.util.TreeMap;
+import java.util.UUID;
 
 import static java.nio.charset.StandardCharsets.UTF_8;
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
@@ -172,6 +179,108 @@ public class ConsoleCloudEventParserTest {
         final Optional<ResourceRequest> exportRequest = cloudEvent.getData(ResourceRequest.class);
 
         Assertions.assertTrue(exportRequest.isEmpty());
+    }
+
+    /**
+     * Tests that generating a Cloud Event in Java and serializing it with the
+     * helper Cloud Event parser, lays a JSON that can be read back with the
+     * parser.
+     */
+    @Test
+    public void shouldParseFromGeneratedCloudEvent() {
+        final LocalDateTime ceTime = LocalDateTime.now(ZoneOffset.UTC);
+        final String ceAccountId = "ce-account-id";
+        final String ceDataSchema = "https://console.redhat.com/api/schemas/core/v1/empty.json";
+        final String ceOrgId = "ce-org-id";
+        final String ceSource = "urn:redhat:source:console:some-app";
+        final String ceSpecVersion = "1.0";
+        final String ceSubject = String.format("urn:redhat:subject:some-app:%s", UUID.randomUUID());
+        final String ceType = "com.redhat.some.app.type";
+        final UUID ceId = UUID.randomUUID();
+
+        final GenericConsoleCloudEvent<JsonNode> cloudEvent = new GenericConsoleCloudEvent<>();
+        cloudEvent.setTime(LocalDateTime.now(ZoneOffset.UTC));
+
+        cloudEvent.setAccountId(ceAccountId);
+        cloudEvent.setDataSchema(ceDataSchema);
+        cloudEvent.setId(ceId);
+        cloudEvent.setOrgId(ceOrgId);
+        cloudEvent.setSource(ceSource);
+        cloudEvent.setSpecVersion(ceSpecVersion);
+        cloudEvent.setSubject(ceSubject);
+        cloudEvent.setTime(ceTime);
+        cloudEvent.setType(ceType);
+
+        // Serialize the contents.
+        final ConsoleCloudEventParser consoleCloudEventParser = new ConsoleCloudEventParser();
+
+        final String result = consoleCloudEventParser.toJson(cloudEvent);
+
+        // Attempt deserializing the contents.
+        final GenericConsoleCloudEvent<JsonNode> resultCe = consoleCloudEventParser.fromJsonString(result);
+
+        Assertions.assertEquals(ceAccountId, resultCe.getAccountId());
+        Assertions.assertEquals(ceDataSchema, resultCe.getDataSchema());
+        Assertions.assertEquals(ceId, resultCe.getId());
+        Assertions.assertEquals(ceOrgId, resultCe.getOrgId());
+        Assertions.assertEquals(ceSource, resultCe.getSource());
+        Assertions.assertEquals(ceSpecVersion, resultCe.getSpecVersion());
+        Assertions.assertEquals(ceSubject, resultCe.getSubject());
+        Assertions.assertEquals(ceTime, resultCe.getTime());
+        Assertions.assertEquals(ceType, resultCe.getType());
+    }
+
+    /**
+     * Tests that generating a Cloud Event in Java and serializing it without
+     * the helper Cloud Event parser, lays a JSON that can be read back with
+     * the parser.
+     * @throws JsonProcessingException if any unexpected error occurs.
+     */
+    @Test
+    public void shouldParseFromGeneratedCloudEventExternalMapper() throws JsonProcessingException {
+        final LocalDateTime ceTime = LocalDateTime.now(ZoneOffset.UTC);
+        final String ceAccountId = "ce-account-id";
+        final String ceDataSchema = "https://console.redhat.com/api/schemas/core/v1/empty.json";
+        final String ceOrgId = "ce-org-id";
+        final String ceSource = "urn:redhat:source:console:some-app";
+        final String ceSpecVersion = "1.0";
+        final String ceSubject = String.format("urn:redhat:subject:some-app:%s", UUID.randomUUID());
+        final String ceType = "com.redhat.some.app.type";
+        final UUID ceId = UUID.randomUUID();
+
+        final GenericConsoleCloudEvent<JsonNode> cloudEvent = new GenericConsoleCloudEvent<>();
+        cloudEvent.setTime(LocalDateTime.now(ZoneOffset.UTC));
+
+        cloudEvent.setAccountId(ceAccountId);
+        cloudEvent.setDataSchema(ceDataSchema);
+        cloudEvent.setId(ceId);
+        cloudEvent.setOrgId(ceOrgId);
+        cloudEvent.setSource(ceSource);
+        cloudEvent.setSpecVersion(ceSpecVersion);
+        cloudEvent.setSubject(ceSubject);
+        cloudEvent.setTime(ceTime);
+        cloudEvent.setType(ceType);
+
+        // Serialize the contents.
+        final ObjectMapper objectMapper = new ObjectMapper();
+        objectMapper.registerModule(new JavaTimeModule());
+        objectMapper.disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);
+
+        final String result = objectMapper.writeValueAsString(cloudEvent);
+
+        // Attempt deserializing the contents.
+        final ConsoleCloudEventParser consoleCloudEventParser = new ConsoleCloudEventParser();
+        final GenericConsoleCloudEvent<JsonNode> resultCe = consoleCloudEventParser.fromJsonString(result);
+
+        Assertions.assertEquals(ceAccountId, resultCe.getAccountId());
+        Assertions.assertEquals(ceDataSchema, resultCe.getDataSchema());
+        Assertions.assertEquals(ceId, resultCe.getId());
+        Assertions.assertEquals(ceOrgId, resultCe.getOrgId());
+        Assertions.assertEquals(ceSource, resultCe.getSource());
+        Assertions.assertEquals(ceSpecVersion, resultCe.getSpecVersion());
+        Assertions.assertEquals(ceSubject, resultCe.getSubject());
+        Assertions.assertEquals(ceTime, resultCe.getTime());
+        Assertions.assertEquals(ceType, resultCe.getType());
     }
 
     private String readSchema(String path) throws IOException {
