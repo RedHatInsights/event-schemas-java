@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.4.9](https://github.com/RedHatInsights/event-schemas-java/compare/v1.4.8...v1.4.9) (2023-06-07)
+
+
+### Bug Fixes
+
+* Allow to parse dates without the `Z` (UTC) ([a9b72f9](https://github.com/RedHatInsights/event-schemas-java/commit/a9b72f9f816bf4ecc4fc5509683fe11037f5b050))
+* **deps:** bump api from `bb5a18a` to `a57120f` ([652eec9](https://github.com/RedHatInsights/event-schemas-java/commit/652eec984514e051b4149463aedf7f4da6b3f2c4))
+* **deps:** bump jackson-bom from 2.15.1 to 2.15.2 ([afd6910](https://github.com/RedHatInsights/event-schemas-java/commit/afd691045efef8ff6a33c9050b2ea932b52082a9))
+* **deps:** bump maven-release-plugin from 3.0.0 to 3.0.1 ([9a9226d](https://github.com/RedHatInsights/event-schemas-java/commit/9a9226dc79a5758b5fccee83eb125c9101d0a975))
+* **deps:** bump maven-surefire-plugin from 3.1.0 to 3.1.2 ([9f5c361](https://github.com/RedHatInsights/event-schemas-java/commit/9f5c3610a34afa9068c5bb4af6d7abb8280d1e46))
+* Init object mapper on ConsoleCloudEvent object ([#183](https://github.com/RedHatInsights/event-schemas-java/issues/183)) ([2c077b7](https://github.com/RedHatInsights/event-schemas-java/commit/2c077b75c24f3346edf41d194b1cdb18fecb888b))
+
 ## [1.4.8](https://github.com/RedHatInsights/event-schemas-java/compare/v1.4.7...v1.4.8) (2023-05-27)
 
 
