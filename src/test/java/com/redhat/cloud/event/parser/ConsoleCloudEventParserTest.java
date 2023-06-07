@@ -152,6 +152,15 @@ public class ConsoleCloudEventParserTest {
     }
 
     @Test
+    public void getWithClassWorksIfCompatibleDataUsingConsoleCloudEventAsCustomClass() throws IOException {
+        ConsoleCloudEventParser consoleCloudEventParser = new ConsoleCloudEventParser();
+        String original = readSchema("cloud-events/notification-recipients.json");
+        ConsoleCloudEvent consoleCloudEvent = consoleCloudEventParser.fromJsonString(original, ConsoleCloudEvent.class);
+        Notification notification = consoleCloudEvent.getData(Notification.class).orElseThrow();
+        assertNotNull(notification);
+    }
+
+    @Test
     public void shouldFailOnNonCompliantCloudEvents() {
         ConsoleCloudEventParser consoleCloudEventParser = new ConsoleCloudEventParser();
         assertThrows(RuntimeException.class, () -> consoleCloudEventParser.fromJsonString(readSchema("cloud-events/advisor-invalid.json")));

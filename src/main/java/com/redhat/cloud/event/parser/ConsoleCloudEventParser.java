@@ -96,8 +96,13 @@ public class ConsoleCloudEventParser {
             // Verify it's a valid Json
             JsonNode cloudEvent = objectMapper.readTree(cloudEventJson);
             validate(cloudEvent, jsonSchema);
+            T genericCloudEvent = objectMapper.treeToValue(cloudEvent, consoleCloudEventClass);
+            if (genericCloudEvent instanceof ConsoleCloudEvent) {
+                ConsoleCloudEvent consoleCloudEvent = (ConsoleCloudEvent) genericCloudEvent;
+                consoleCloudEvent.setObjectMapper(this.objectMapper);
+            }
 
-            return objectMapper.treeToValue(cloudEvent, consoleCloudEventClass);
+            return genericCloudEvent;
         } catch (JsonProcessingException jpe) {
             throw new ConsoleCloudEventParsingException("Cloud event parsing failed for: " + cloudEventJson, jpe);
         }
