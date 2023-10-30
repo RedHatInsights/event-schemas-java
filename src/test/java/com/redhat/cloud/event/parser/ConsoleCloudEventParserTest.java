@@ -149,6 +149,9 @@ public class ConsoleCloudEventParserTest {
 
         assertEquals(3, notification.getNotificationRecipients().getUsers().length);
         assertArrayEquals(new String[]{ "foo", "bar", "x" }, notification.getNotificationRecipients().getUsers());
+
+        assertEquals(2, notification.getNotificationRecipients().getEmails().length);
+        assertArrayEquals(new String[]{ "foo@bar.com", "bar@foo.com"}, notification.getNotificationRecipients().getEmails());
     }
 
     @Test
