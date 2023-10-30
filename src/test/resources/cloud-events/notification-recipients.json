@@ -16,6 +16,10 @@
         "foo",
         "bar",
         "x"
+      ],
+      "emails": [
+        "foo@bar.com",
+        "bar@foo.com"
       ]
     }
   }
