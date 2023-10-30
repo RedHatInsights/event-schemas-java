@@ -1,5 +1,21 @@
 # Changelog
 
+## [1.4.10](https://github.com/RedHatInsights/event-schemas-java/compare/v1.4.9...v1.4.10) (2023-10-30)
+
+
+### Bug Fixes
+
+* **deps:** bump api from `2a6f76d` to `bbaff1a` ([546ff49](https://github.com/RedHatInsights/event-schemas-java/commit/546ff4937291305c5a71880891c6cc677c1b7a35))
+* **deps:** bump api from `a57120f` to `2a6f76d` ([f4fda4a](https://github.com/RedHatInsights/event-schemas-java/commit/f4fda4a29c059e4dd00bb66dc9ffed5cc8b2188c))
+* **deps:** bump api from `bbaff1a` to `f7bc074` ([f5edcfc](https://github.com/RedHatInsights/event-schemas-java/commit/f5edcfc1eb42ee0c6303c08ff725a6b5e9d114bf))
+* **deps:** bump com.fasterxml.jackson:jackson-bom from 2.15.2 to 2.15.3 ([6f72fb8](https://github.com/RedHatInsights/event-schemas-java/commit/6f72fb85c656fff9ff7c5682eacfbdb3f51c8df2))
+* **deps:** bump com.networknt:json-schema-validator ([793c6ff](https://github.com/RedHatInsights/event-schemas-java/commit/793c6ff02f3da10e94ef1792058b89051cac5e42))
+* **deps:** bump json-schema-validator from 1.0.83 to 1.0.84 ([a55072f](https://github.com/RedHatInsights/event-schemas-java/commit/a55072f9a3a2e9af68c4e2cdebf4f9f6f711df25))
+* **deps:** bump json-schema-validator from 1.0.84 to 1.0.85 ([c53345f](https://github.com/RedHatInsights/event-schemas-java/commit/c53345fd02992898412a246d3d6aad0888341f16))
+* **deps:** bump json-schema-validator from 1.0.85 to 1.0.86 ([1c98363](https://github.com/RedHatInsights/event-schemas-java/commit/1c9836370b33c838a476f660f57c6fdb2d30e579))
+* **deps:** bump org.apache.maven.plugins:maven-surefire-plugin ([9170f6f](https://github.com/RedHatInsights/event-schemas-java/commit/9170f6f14b4ba1f0fe82a68fe58c8e0281eabe42))
+* Regenerate types ([5168c81](https://github.com/RedHatInsights/event-schemas-java/commit/5168c81587cb71927eb39aaf3a943973f582f67c))
+
 ## [1.4.9](https://github.com/RedHatInsights/event-schemas-java/compare/v1.4.8...v1.4.9) (2023-06-07)
 
 
