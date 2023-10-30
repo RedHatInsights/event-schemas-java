@@ -6,9 +6,21 @@ import com.fasterxml.jackson.annotation.*;
  * Notification recipients. Should be in a top-level field named "notification_recipients"
  */
 public class Recipients {
+    private String[] emails;
     private Boolean ignoreUserPreferences;
     private Boolean onlyAdmins;
     private String[] users;
+
+    /**
+     * List of emails to direct the notification to. This won’t override notification's
+     * administrators settings. Emails list will be merged with other settings.
+     */
+    @JsonProperty("emails")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    public String[] getEmails() { return emails; }
+    @JsonProperty("emails")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    public void setEmails(String[] value) { this.emails = value; }
 
     /**
      * Setting to true ignores all the user preferences on this Recipient setting (It doesn’t
