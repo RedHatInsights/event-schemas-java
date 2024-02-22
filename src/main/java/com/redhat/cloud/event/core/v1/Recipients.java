@@ -13,7 +13,10 @@ public class Recipients {
 
     /**
      * List of emails to direct the notification to. This won’t override notification's
-     * administrators settings. Emails list will be merged with other settings.
+     * administrators settings. Emails list will be merged with other settings. Subscription
+     * settings do not work with emails. Therefore, emails should only be used to send
+     * notifications to mailing lists or email addresses that do not belong to the current org.
+     * Prefer using the users field for any other use cases.
      */
     @JsonProperty("emails")
     @JsonInclude(JsonInclude.Include.NON_NULL)
@@ -47,7 +50,8 @@ public class Recipients {
 
     /**
      * List of users to direct the notification to. This won’t override notification's
-     * administrators settings. Users list will be merged with other settings.
+     * administrators settings. If this list is present and not empty, users from the org who
+     * are not included in the list will not receive the notification.
      */
     @JsonProperty("users")
     @JsonInclude(JsonInclude.Include.NON_NULL)
