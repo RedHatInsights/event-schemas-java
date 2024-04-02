@@ -28,6 +28,7 @@
     <maven.compiler.target>${java.release}</maven.compiler.target>
     <maven.compiler.source>${java.release}</maven.compiler.source>
     <junit.version>5.10.2</junit.version>
+    <slf4j.version>2.0.12</slf4j.version>
   </properties>
 
   <licenses>
@@ -77,6 +78,13 @@
       <groupId>org.junit.jupiter</groupId>
       <artifactId>junit-jupiter-engine</artifactId>
       <version>${junit.version}</version>
+      <scope>test</scope>
+    </dependency>
+    <!-- enable logging for tests only -->
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-simple</artifactId>
+      <version>${slf4j.version}</version>
       <scope>test</scope>
     </dependency>
   </dependencies>
