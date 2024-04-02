@@ -164,7 +164,11 @@ public class ConsoleCloudEventParser {
                 .addKeywords(List.of(
                         new NonValidationKeyword("examples"),
                         new NonValidationKeyword("$schema"),
-                        new NonValidationKeyword("definitions")
+                        new NonValidationKeyword("definitions"),
+                        new NonValidationKeyword(ID),
+                        new NonValidationKeyword("title"),
+                        new NonValidationKeyword("description"),
+                        new NonValidationKeyword("contentEncoding")
                 ))
                 .addFormats(JsonMetaSchema.COMMON_BUILTIN_FORMATS)
                 .addFormat(new LocalDateTimeValidator())
