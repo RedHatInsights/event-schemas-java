@@ -1,5 +1,15 @@
 # Changelog
 
+## [1.4.11](https://github.com/RedHatInsights/event-schemas-java/compare/v1.4.10...v1.4.11) (2024-04-02)
+
+
+### Bug Fixes
+
+* **deps:** bump api from `f7bc074` to `b547bbb` ([#224](https://github.com/RedHatInsights/event-schemas-java/issues/224)) ([d3ac5ce](https://github.com/RedHatInsights/event-schemas-java/commit/d3ac5ce8608b66121af8c392b98563fc1e736079))
+* **deps:** bump org.apache.maven.plugins:maven-surefire-plugin ([#242](https://github.com/RedHatInsights/event-schemas-java/issues/242)) ([63352c9](https://github.com/RedHatInsights/event-schemas-java/commit/63352c946543e38ea247464f511ac835238e1d2a))
+* exclude some keywords from validation ([#261](https://github.com/RedHatInsights/event-schemas-java/issues/261)) ([3cdaeb9](https://github.com/RedHatInsights/event-schemas-java/commit/3cdaeb94b907afa0eb3b7e81a9698cac7c677668))
+* Regenerate types ([3eaeaf7](https://github.com/RedHatInsights/event-schemas-java/commit/3eaeaf7669ffa5ce68a7c58c768bee081ef412a3))
+
 ## [1.4.10](https://github.com/RedHatInsights/event-schemas-java/compare/v1.4.9...v1.4.10) (2023-10-30)
 
 
