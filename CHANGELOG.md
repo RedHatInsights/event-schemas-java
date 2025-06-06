@@ -1,5 +1,16 @@
 # Changelog
 
+## [1.4.12](https://github.com/RedHatInsights/event-schemas-java/compare/v1.4.11...v1.4.12) (2025-06-06)
+
+
+### Bug Fixes
+
+* **deps:** bump com.fasterxml.jackson:jackson-bom from 2.15.3 to 2.17.2 ([d0c33dc](https://github.com/RedHatInsights/event-schemas-java/commit/d0c33dc6bc580efab1b9517bb9ba87438cdf0c7c))
+* **deps:** bump org.apache.maven.plugins:maven-release-plugin ([e360b21](https://github.com/RedHatInsights/event-schemas-java/commit/e360b213c6c36e187879d1394151e8bc8c3357a5))
+* **deps:** bump org.apache.maven.plugins:maven-source-plugin ([#263](https://github.com/RedHatInsights/event-schemas-java/issues/263)) ([c8b2a27](https://github.com/RedHatInsights/event-schemas-java/commit/c8b2a27529f0072239507c065df64a26a55bfe3a))
+* **deps:** bump org.apache.maven.plugins:maven-surefire-plugin ([2dabdbc](https://github.com/RedHatInsights/event-schemas-java/commit/2dabdbc3db7065a67cf993dcd16cbaeab8b6c321))
+* **deps:** bump org.sonatype.plugins:nexus-staging-maven-plugin ([#288](https://github.com/RedHatInsights/event-schemas-java/issues/288)) ([13f316b](https://github.com/RedHatInsights/event-schemas-java/commit/13f316b1fc0f95c9b9f376f4979bbe40bcaa12b7))
+
 ## [1.4.11](https://github.com/RedHatInsights/event-schemas-java/compare/v1.4.10...v1.4.11) (2024-04-02)
 
 
