@@ -2,17 +2,17 @@ package com.redhat.cloud.event.parser.validators;
 
 import com.networknt.schema.Format;
 
+import com.networknt.schema.format.AbstractFormat;
+import com.networknt.schema.format.BaseFormat;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 
-public class LocalDateTimeValidator implements Format {
+public class LocalDateTimeValidator extends AbstractFormat {
 
-    private String message;
-
-    @Override
-    public String getName() {
-        return "date-time";
+    public LocalDateTimeValidator() {
+        super("date-time", "must be a valid ISO_DATE_TIME date time");
     }
+    private String message;
 
     @Override
     public boolean matches(String text) {
