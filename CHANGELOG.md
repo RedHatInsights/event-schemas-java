@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.4.13](https://github.com/RedHatInsights/event-schemas-java/compare/v1.4.12...v1.4.13) (2025-09-01)
+
+
+### Bug Fixes
+
+* **deps:** bump com.fasterxml.jackson:jackson-bom from 2.19.0 to 2.20.0 ([#322](https://github.com/RedHatInsights/event-schemas-java/issues/322)) ([5c0a4aa](https://github.com/RedHatInsights/event-schemas-java/commit/5c0a4aaa35792930e3dd75378f164b7444245419))
+* **deps:** bump com.networknt:json-schema-validator from 1.5.7 to 1.5.8 ([#318](https://github.com/RedHatInsights/event-schemas-java/issues/318)) ([3f9c6f1](https://github.com/RedHatInsights/event-schemas-java/commit/3f9c6f1846d1d117dfaeb9b4a6760253895c7788))
+
 ## [1.4.12](https://github.com/RedHatInsights/event-schemas-java/compare/v1.4.11...v1.4.12) (2025-06-11)
 
 
