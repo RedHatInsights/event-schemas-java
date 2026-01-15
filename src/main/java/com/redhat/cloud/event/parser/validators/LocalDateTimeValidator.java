@@ -1,7 +1,7 @@
 package com.redhat.cloud.event.parser.validators;
 
 import com.networknt.schema.ExecutionContext;
-import com.networknt.schema.Format;
+import com.networknt.schema.format.Format;
 
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
