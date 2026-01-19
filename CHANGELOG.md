@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.4.14](https://github.com/RedHatInsights/event-schemas-java/compare/v1.4.13...v1.4.14) (2026-01-19)
+
+
+### Bug Fixes
+
+* Release minor version ([dbb0edb](https://github.com/RedHatInsights/event-schemas-java/commit/dbb0edb0dd57c0382ad7fc5890bf83b3a5bb1fc4))
+
 ## [1.4.13](https://github.com/RedHatInsights/event-schemas-java/compare/v1.4.12...v1.4.13) (2026-01-15)
 
 
