@@ -1,5 +1,19 @@
 # Changelog
 
+## [1.5.0](https://github.com/RedHatInsights/event-schemas-java/compare/v1.4.14...v1.5.0) (2026-01-22)
+
+
+### Features
+
+* Release event-schemas-java ([ff94423](https://github.com/RedHatInsights/event-schemas-java/commit/ff944231ed63812c510812b53e88da2159374f1f))
+* Release event-schemas-java ([ff94423](https://github.com/RedHatInsights/event-schemas-java/commit/ff944231ed63812c510812b53e88da2159374f1f))
+* Release event-schemas-java ([5553389](https://github.com/RedHatInsights/event-schemas-java/commit/555338991a872970dd1f6524d208abaa1631b24f))
+
+
+### Bug Fixes
+
+* **deps:** bump org.apache.maven.plugins:maven-resources-plugin ([#331](https://github.com/RedHatInsights/event-schemas-java/issues/331)) ([67b4fcc](https://github.com/RedHatInsights/event-schemas-java/commit/67b4fcccb957c3e1437d21c9205a3c8c67dd111e))
+
 ## [1.4.14](https://github.com/RedHatInsights/event-schemas-java/compare/v1.4.13...v1.4.14) (2026-01-19)
 
 
