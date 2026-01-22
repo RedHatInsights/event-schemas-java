@@ -1,5 +1,25 @@
 # Changelog
 
+## [1.4.14](https://github.com/RedHatInsights/event-schemas-java/compare/v1.4.13...v1.4.14) (2026-01-19)
+
+
+### Bug Fixes
+
+* Release minor version ([dbb0edb](https://github.com/RedHatInsights/event-schemas-java/commit/dbb0edb0dd57c0382ad7fc5890bf83b3a5bb1fc4))
+
+## [1.4.13](https://github.com/RedHatInsights/event-schemas-java/compare/v1.4.12...v1.4.13) (2026-01-15)
+
+
+### Bug Fixes
+
+* **deps:** bump com.fasterxml.jackson:jackson-bom from 2.19.0 to 2.20.0 ([#322](https://github.com/RedHatInsights/event-schemas-java/issues/322)) ([5c0a4aa](https://github.com/RedHatInsights/event-schemas-java/commit/5c0a4aaa35792930e3dd75378f164b7444245419))
+* **deps:** bump com.networknt:json-schema-validator from 1.5.7 to 1.5.8 ([#318](https://github.com/RedHatInsights/event-schemas-java/issues/318)) ([3f9c6f1](https://github.com/RedHatInsights/event-schemas-java/commit/3f9c6f1846d1d117dfaeb9b4a6760253895c7788))
+* **deps:** bump org.apache.maven.plugins:maven-surefire-plugin ([19cee95](https://github.com/RedHatInsights/event-schemas-java/commit/19cee9514adf57be13e62b69805a99912aef7ead))
+* Update deployment process ([8af1774](https://github.com/RedHatInsights/event-schemas-java/commit/8af1774cf51373bbdca6e10f092e85b7fb2f2e8b))
+* Update deployment process ([8af1774](https://github.com/RedHatInsights/event-schemas-java/commit/8af1774cf51373bbdca6e10f092e85b7fb2f2e8b))
+* Update deployment process ([afe9252](https://github.com/RedHatInsights/event-schemas-java/commit/afe925228f3c8bb9b816fd348d04ab5e0b056d24))
+* Update deployment process ([450d10c](https://github.com/RedHatInsights/event-schemas-java/commit/450d10cf71cb0664c2aec09db147b21a9a710d37))
+
 ## [1.4.12](https://github.com/RedHatInsights/event-schemas-java/compare/v1.4.11...v1.4.12) (2025-06-11)
 
 
