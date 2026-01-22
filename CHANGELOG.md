@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.4.15](https://github.com/RedHatInsights/event-schemas-java/compare/v1.4.14...v1.4.15) (2026-01-22)
+
+
+### Bug Fixes
+
+* **deps:** bump org.apache.maven.plugins:maven-resources-plugin ([#331](https://github.com/RedHatInsights/event-schemas-java/issues/331)) ([67b4fcc](https://github.com/RedHatInsights/event-schemas-java/commit/67b4fcccb957c3e1437d21c9205a3c8c67dd111e))
+
 ## [1.4.14](https://github.com/RedHatInsights/event-schemas-java/compare/v1.4.13...v1.4.14) (2026-01-19)
 
 
